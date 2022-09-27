@@ -1,7 +1,7 @@
 import throttle from 'lodash.throttle';
 import { save, load, remove } from './storage';
 
-refs = {
+const refs = {
   form: document.querySelector('.feedback-form'),
   input: document.querySelector('input'),
   textarea: document.querySelector('textarea'),
