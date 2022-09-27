@@ -4,7 +4,7 @@ import { save, load, remove } from './storage';
 
 console.log(document.location);
 
-refs = {
+const refs = {
   iframe: document.querySelector('#vimeo-player'),
 };
 
