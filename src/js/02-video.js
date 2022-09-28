@@ -2,8 +2,6 @@ import Player from '@vimeo/player';
 import throttle from 'lodash.throttle';
 import { save, load, remove } from './storage';
 
-console.log(document.location);
-
 const refs = {
   iframe: document.querySelector('#vimeo-player'),
 };
@@ -19,7 +17,12 @@ const onPlay = e => {
   }
 };
 
+const onFirstEnter = e => {
+  const savedTime = load(LOCALSTORAGE_KEY);
+  if (savedTime) {
+    player.setCurrentTime(savedTime);
+  }
+};
+
 player.on('timeupdate', throttle(onPlay, 1000));
-player.setCurrentTime(load(LOCALSTORAGE_KEY)).then(() => {});
-// window.onbeforeunload = () =>
-//   player.unload().then(() => remove(LOCALSTORAGE_KEY));
+onFirstEnter();
